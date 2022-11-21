@@ -31,9 +31,9 @@ public class Problem1_Task2_Greedy extends  BuySellStockProblem1{
             }
             
             if( maxProfit < currentProfit ) {
-                stockId = i + 1; 
-                buyDay = buy + 1;
-                sellDay = sell + 1;
+                stockId = i; 
+                buyDay = buy;
+                sellDay = sell;
                 maxProfit = currentProfit;
             }
         }

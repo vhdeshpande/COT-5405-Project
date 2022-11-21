@@ -45,7 +45,7 @@ public class Problem3_Task7_BruteForce extends BuySellStockProblem3{
 
             //Sell -> k decrement
             ArrayList<ArrayList<Integer>> modifiedOutput = clone;
-            modifiedOutput.add(new ArrayList<Integer>(Arrays.asList( stockId +1 , boughtOn+1, day+1 )));
+            modifiedOutput.add(new ArrayList<Integer>(Arrays.asList( stockId, boughtOn, day )));
             Problem3_Task7_BruteForce Problem2_Task4_BruteForceSellRes = getMaxProfit( c , day + c + 1, false, null, null, modifiedOutput);
             int profit = Problem2_Task4_BruteForceSellRes.profit + (stockPrices[stockId][day] - stockPrices[stockId][boughtOn]);
             if(profit > outputProfit){

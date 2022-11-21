@@ -43,24 +43,24 @@ public class Problem3_Task9B_DPIterativeBottomUp extends BuySellStockProblem3{
 
         maxProfit = maxProfitDay[0];
         
-		int b=-1,s=-1;
-		int x=maxProfitStockId[0], y=0;
-		while(x<m && y<n){
-			while(y<n && dpBuy[x][y] == dpBuy[x][y+1]){
+		int buyDay = -1,sellDay = -1;
+		int x = maxProfitStockId[0], y = 0;
+		while( x < m && y < n ){
+			while( y < n && dpBuy[x][y] == dpBuy[x][y+1]){
 				y++;
 			}
-			b = y;
-			if (y<n){
+			buyDay = y;
+			if ( y < n ){
 				y++;
 			};
-			while(y<n && dpSell[x][y] == dpSell[x][y+1]){
+			while( y < n && dpSell[x][y] == dpSell[x][y+1] ){
 				y++;
 			}
-			s=y;
+			sellDay = y;
 
-			transactionSequnce.add(new ArrayList<Integer>(Arrays.asList(x+1,b+1,s+1)));
-			y = y+c+1;
-			if (y>=n){
+			transactionSequnce.add( new ArrayList<Integer>( Arrays.asList( x, buyDay, sellDay ) ) );
+			y = y + c + 1;
+			if ( y >= n){
 				break;
 			};
 			x=maxProfitStockId[y];

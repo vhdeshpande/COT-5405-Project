@@ -1,8 +1,3 @@
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Scanner;
-
 public class Problem1_Task1_BruteForce extends BuySellStockProblem1 {
 
     @Override
@@ -19,13 +14,13 @@ public class Problem1_Task1_BruteForce extends BuySellStockProblem1 {
 
                     if (prices[j] > prices[i] && prices[j] - prices[i] > currentProfit) {
                         currentProfit = prices[j] - prices[i];
-                        buy = i + 1;
-                        sell = j + 1;
+                        buy = i;
+                        sell = j;
                     }
                 }
             }
             if (maxProfit < currentProfit) {
-                stockId = k + 1;
+                stockId = k;
                 buyDay = buy;
                 sellDay = sell;
                 maxProfit = currentProfit;

@@ -55,7 +55,7 @@ public class Problem2_Task6B_DPIterativeBottomUp extends BuySellStockProblem2{
             if (y>=n){
                 break;
             };
-            transactionSequnce.add(new ArrayList<Integer>(Arrays.asList(x,b,s)));
+            transactionSequnce.add( new ArrayList<Integer>( Arrays.asList( x, b, s ) ) );
             z--;
             x=maxProfitStockId[y][z];
         }

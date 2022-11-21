@@ -5,9 +5,11 @@ public class BuySellStock {
     public static final String PROBLEM1_TASK3B = "3b";
     public static final String PROBLEM2_TASK4 = "4";
     public static final String PROBLEM2_TASK5 = "5";
+    public static final String PROBLEM2_TASK6A = "6a";
     public static final String PROBLEM2_TASK6B = "6b";
     public static final String PROBLEM3_TASK7 = "7";
     public static final String PROBLEM3_TASK8 = "8";
+    public static final String PROBLEM3_TASK9A = "9a";
     public static final String PROBLEM3_TASK9B = "9b";
 
     public static void main(String[] args) {
@@ -43,7 +45,11 @@ public class BuySellStock {
                 break;
 
             case PROBLEM2_TASK5:
-                buySellStockTaskIntf = new Problem1_Task5_DP();
+                buySellStockTaskIntf = new Problem2_Task5_DP();
+                break;
+
+            case PROBLEM2_TASK6A:
+                buySellStockTaskIntf = new Problem2_Task6A_DPRecursiveMemoization();
                 break;
 
             case PROBLEM2_TASK6B:
@@ -56,6 +62,10 @@ public class BuySellStock {
 
             case PROBLEM3_TASK8:
                 buySellStockTaskIntf = new Problem3_Task8_DP();
+                break;
+
+            case PROBLEM3_TASK9A:
+                buySellStockTaskIntf = new Problem3_Task9A_DPRecursiveMemoization();
                 break;
 
             case PROBLEM3_TASK9B:
