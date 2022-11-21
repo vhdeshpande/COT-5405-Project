@@ -59,31 +59,33 @@ public class Problem1_Task5_DP extends  BuySellStockProblem2{
                    
                 }
               
-               
                 }
                 
 
             }
-        
-        int i =k;
-        int j = n-1;
-        while(i>0 && j>0){
-                int s = j;
-                while( j-1>=0 && profit[i][j] == profit[i][j-1]){
-                    j--;
-                }
-
-                int b = buy[i][j];
-                int id = stockId[i][j];
-
-                transactionSequnce.add(new ArrayList<Integer>(Arrays.asList(id,b,s)));
-                if( j-1>=0){
-                    j--;
-                }
-                
-            i--;
-
-        }
+            int i =k;
+            int j = n-1;
+    
+            while(i>0 && j>0){
+                    while( j-1>=0 && profit[i][j] == profit[i][j-1]){
+                        j--;
+                    }
+                    int s = j;
+                    while( j-1>=0 && profit[i][j] == profit[i][j-1]){
+                        j--;
+                    }
+    
+                    int b = buy[i][j];
+                    int id = stockId[i][j];
+    
+                    transactionSequnce.add(new ArrayList<Integer>(Arrays.asList(id,b,s)));
+                    if( j-1>=0){
+                        j--;
+                    }
+                    
+                i--;
+    
+            }
         
         transactionSeq = transactionSequnce;
         maxProfit = profit[k][n - 1];

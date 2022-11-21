@@ -50,9 +50,9 @@ public class Problem1_Task3B_DPIterativeBottomUp extends  BuySellStockProblem1{
         
         
         maxProfit = maxStockProfit;
-        stockId = maxStockId;
-        buyDay = maxBuyDay;
-        sellDay = maxSellDay;
+        stockId = maxStockId + 1;
+        buyDay = maxBuyDay + 1;
+        sellDay = maxSellDay + 1;
         
 	}
       

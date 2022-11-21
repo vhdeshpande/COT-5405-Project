@@ -58,7 +58,7 @@ public class Problem3_Task9B_DPIterativeBottomUp extends BuySellStockProblem3{
 			}
 			s=y;
 
-			transactionSequnce.add(new ArrayList<Integer>(Arrays.asList(x,b,s)));
+			transactionSequnce.add(new ArrayList<Integer>(Arrays.asList(x+1,b+1,s+1)));
 			y = y+c+1;
 			if (y>=n){
 				break;
