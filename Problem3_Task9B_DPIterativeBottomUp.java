@@ -21,7 +21,7 @@ public class Problem3_Task9B_DPIterativeBottomUp extends BuySellStockProblem3{
 				int skipSell = dpSell[i][j+1];
 				int maxprof = 0;
 				if(j+c+1<=n) {
-					maxprof = maxProfitDay[j+2+1];
+					maxprof = maxProfitDay[j+c+1];
 				}
 				int sell =  maxprof + stockPrices[i][j];
 				dpSell[i][j] = Math.max(skipSell, sell);
