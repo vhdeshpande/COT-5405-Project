@@ -1,5 +1,5 @@
 public class Utils {
-    public static boolean toPrint = true;
+    public static boolean toPrint = false;
 
     public static void show(String text) {
         if (toPrint) {

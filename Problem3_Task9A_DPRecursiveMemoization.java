@@ -24,9 +24,11 @@ public class Problem3_Task9A_DPRecursiveMemoization extends BuySellStockProblem3
         int buyDay = -1,sellDay = -1;
 		int x = buySell.maxProfitStockId[0], y = 0;
 		while( x < m && y < n ){
+			//Getting the sell index for the transcations
 			while( y < n && buySell.dpBuy[x][y] == buySell.dpBuy[x][y+1]){
 				y++;
 			}
+			//Getting the buy index for the transcations
 			buyDay = y;
 			if ( y < n ){
 				y++;
@@ -36,7 +38,9 @@ public class Problem3_Task9A_DPRecursiveMemoization extends BuySellStockProblem3
 			}
 			sellDay = y;
 
+            //Adding the eligible transactions to the final results
 			transactionSequnce.add( new ArrayList<Integer>( Arrays.asList( x, buyDay, sellDay ) ) );
+			//Increment the value with cooldown
 			y = y + c + 1;
 			if ( y >= n){
 				break;
@@ -56,7 +60,7 @@ public class Problem3_Task9A_DPRecursiveMemoization extends BuySellStockProblem3
             maxValueDay = 0;
 			for(int stockId=0; stockId<stockPrices.length;stockId++)
 			{
-				//Sell
+				//Calculating the skip sell and sell to obtain the maximum profits
 				int skipSell = this.dpSell[stockId][day+1];
                 int maxprof = 0;
                 if(day+c+1 <= n) {
@@ -65,13 +69,14 @@ public class Problem3_Task9A_DPRecursiveMemoization extends BuySellStockProblem3
 				int sell =  maxprof + stockPrices[stockId][day];
 				dpSell[stockId][day] = Math.max(skipSell, sell);	
 				
-				//Buy
+				//Calculating the skip buy and buy to obtain the maximum profits
 				int skipBuy = dpBuy[stockId][day+1];
 				int profit = dpSell[stockId][day+1] - stockPrices[stockId][day];
 				dpBuy[stockId][day] = Math.max(skipBuy, profit);	
                 if(maxValueDay <= dpBuy[stockId][day]){
                     maxProfitStockId[day] = stockId;
                 }
+				//Return the maximum value for the day and update the table
                 maxValueDay = Math.max(maxValueDay, dpBuy[stockId][day]);		
 				this.maxProfitDay[day] = Math.max(this.maxProfitDay[day], dpBuy[stockId][day]);	
 			}
@@ -82,7 +87,7 @@ public class Problem3_Task9A_DPRecursiveMemoization extends BuySellStockProblem3
 			int maxValueDayNextStock = ComputeDayProfit( day+1, c, maxValueDay );
 			for(int stockId=0; stockId<stockPrices.length; stockId++)
 			{
-				//Sell
+				//Calculating the skip sell and sell to obtain the maximum profits
 				int skipSell = this.dpSell[stockId][day+1];
                 int maxprof = 0;
                 if(day+c+1 <= n) {
@@ -91,7 +96,7 @@ public class Problem3_Task9A_DPRecursiveMemoization extends BuySellStockProblem3
 				int sell =  maxprof + stockPrices[stockId][day];
 				dpSell[stockId][day] = Math.max(skipSell, sell);	
 				
-				//Buy
+				//Calculating the skip buy and buy to obtain the maximum profits
 				int skipBuy = dpBuy[stockId][day+1];
                 maxValueDayNextStock = Math.max(maxValueDayNextStock, skipBuy);
 				int profit = dpSell[stockId][day+1] - stockPrices[stockId][day];
@@ -99,11 +104,12 @@ public class Problem3_Task9A_DPRecursiveMemoization extends BuySellStockProblem3
                 if(maxValueDay <= dpBuy[stockId][day]){
                     maxProfitStockId[day] = stockId;
                 }
+				//Return the maximum value for the day and update the table
                 maxValueDay = Math.max(maxValueDay, dpBuy[stockId][day]);			
 				this.maxProfitDay[day] = Math.max(this.maxProfitDay[day], dpBuy[stockId][day]);
 			}	
 		}
-
+  		//Return maximum profit
 		return this.maxProfitDay[day];
 	}	
 	

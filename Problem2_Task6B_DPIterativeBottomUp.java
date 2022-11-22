@@ -7,6 +7,7 @@ public class Problem2_Task6B_DPIterativeBottomUp extends BuySellStockProblem2{
 
 	@Override
 	public void calculateMaxProfit() {
+        //Dp table maintain the profit value for k transcations
 		int[][][] dpBuy = new int [m][n+1][k+1];
         int[][][] dpSell = new int [m][n+1][k+1];
         int[][] maxProfitDay = new int [n+1][k+1];
@@ -38,9 +39,13 @@ public class Problem2_Task6B_DPIterativeBottomUp extends BuySellStockProblem2{
             }
         }
         maxProfit = maxProfitDay[0][k];
+
+        //Backtracking to get the transcation sequence for obtaining the maximum profit for at most k transactions
+
         int b=-1,s=-1;
         int x=maxProfitStockId[0][k], y=0, z=k;
         while(z>0 && x<m && y<n){
+            //Getting the buy index for the transcations
             while(y<n && dpBuy[x][y][z] == dpBuy[x][y+1][z]){
                 y++;
             }
@@ -48,6 +53,7 @@ public class Problem2_Task6B_DPIterativeBottomUp extends BuySellStockProblem2{
             if (y<n){
                 y++;
             };
+            //Getting the sell index for the transcations
             while(y<n && dpSell[x][y][z] == dpSell[x][y+1][z]){
                 y++;
             }
@@ -55,8 +61,12 @@ public class Problem2_Task6B_DPIterativeBottomUp extends BuySellStockProblem2{
             if (y>=n){
                 break;
             };
+
+            //Adding the eligible transactions to the final results
             transactionSequnce.add( new ArrayList<Integer>( Arrays.asList( x, b, s ) ) );
+            //Decrement the number of transcations
             z--;
+            //Moving to the next stock id to obtain the transcation sequence
             x=maxProfitStockId[y][z];
         }
         

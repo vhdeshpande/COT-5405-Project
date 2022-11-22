@@ -10,6 +10,8 @@ public class Problem1_Task3B_DPIterativeBottomUp extends  BuySellStockProblem1{
 		int maxStockId = 0;
         int maxStockProfit = 0;
         
+
+		//Iterating over each stock
         for(int i = 0; i < m; i++){
             int maxStockValue  = 0;
             
@@ -17,6 +19,7 @@ public class Problem1_Task3B_DPIterativeBottomUp extends  BuySellStockProblem1{
             int bestBuyDay = -1;
             int currMaxProfit = -1;
             
+			//Iterating over the stock each day keeping track of the maximum value found
             for(int j = n-1; j >=0 ; j--)
             {
             	if(stockPrices[i][j] > maxStockValue)
@@ -29,6 +32,7 @@ public class Problem1_Task3B_DPIterativeBottomUp extends  BuySellStockProblem1{
             
             int currentStockMaxProfit = 0;
             
+			//Calculate the maximum profit based on the current maximum value and the current maximum valeu
             for(int j = 0; j<n ; j++){
             	int profit = dp[i][j]-stockPrices[i][j];
             	if(profit> currentStockMaxProfit)
@@ -39,6 +43,7 @@ public class Problem1_Task3B_DPIterativeBottomUp extends  BuySellStockProblem1{
             	}
             }
             
+			//Update the maximum profit if the the current profit is greater the maximum
             if(currMaxProfit>maxStockProfit )
             {
             	maxStockId = i;
