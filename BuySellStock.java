@@ -79,16 +79,16 @@ public class BuySellStock {
 
         buySellStockTaskIntf.readInput();
 
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
 
         buySellStockTaskIntf.calculateMaxProfit();
 
-        long endTime = System.currentTimeMillis();
+        long endTime = System.nanoTime();
 
         buySellStockTaskIntf.displayResult();
         Utils.show("Start Time: " + startTime + " ms\n");
         Utils.show("End Time: " + endTime + " ms\n");
-        Utils.show("Execution Time: " + (endTime - startTime) + " ms\n");
+        Utils.show("Execution Time: " + (endTime - startTime)/1000 + " ms\n");
     }
 
 }
